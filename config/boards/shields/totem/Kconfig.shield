@@ -1,8 +1,11 @@
-# Copyright (c) 2022 The ZMK Contributors
-# SPDX-License-Identifier: MIT
+menu "My Split Keyboard Shields"
 
-config SHIELD_TOTEM_LEFT
-    def_bool $(shields_list_contains,totem_left)
+config SHIELD_HANDWIRED_SPLIT_LEFT
+    bool "handwired_split_left"
+    default $(shields_list_contains,handwired_split_left)
 
-config SHIELD_TOTEM_RIGHT
-    def_bool $(shields_list_contains,totem_right)
+config SHIELD_HANDWIRED_SPLIT_RIGHT
+    bool "handwired_split_right"
+    default $(shields_list_contains,handwired_split_right)
+
+endmenu
