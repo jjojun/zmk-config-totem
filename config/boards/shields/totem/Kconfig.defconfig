@@ -1,19 +1,24 @@
-# Copyright (c) 2022 The ZMK Contributors
-# SPDX-License-Identifier: MIT
-
-if SHIELD_TOTEM_LEFT
-
-config ZMK_KEYBOARD_NAME
-    default "TOTEM"
-    
-config ZMK_SPLIT_ROLE_CENTRAL
-    default y
-
+if SHIELD_HANDWIRED_SPLIT_LEFT || SHIELD_HANDWIRED_SPLIT_RIGHT
+    config ZMK_SPLIT
+        default y
 endif
 
-if SHIELD_TOTEM_LEFT || SHIELD_TOTEM_RIGHT
+if SHIELD_HANDWIRED_SPLIT_LEFT
+    config ZMK_SPLIT_ROLE_PERIPHERAL
+        default y
+endif
 
-config ZMK_SPLIT
-    default y
+if SHIELD_HANDWIRED_SPLIT_RIGHT
+    config ZMK_SPLIT_ROLE_CENTRAL
+        default y
+endif
 
+if SHIELD_HANDWIRED_SPLIT_LEFT || SHIELD_HANDWIRED_SPLIT_RIGHT
+    config ZMK_KEYBOARD_NAME
+        default "Handwired"
+    # EC11(노브) 드라이버 활성화
+    config CONFIG_EC11
+        default y
+    config CONFIG_EC11_TRIGGER_GLOBAL_THREAD
+        default y
 endif
